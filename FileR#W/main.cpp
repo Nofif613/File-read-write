@@ -1,0 +1,45 @@
+﻿#include <iostream>
+#include <stdexcept>
+#include <fstream>
+#include <string>
+namespace my {
+	std::string file0(std::string arr[3]);
+};
+int main() {
+	std::string arr[3];
+	for (int i = 0; 3 > i; i++) {
+		std::string x;
+		std::string y;
+		std::cout << "Enter name of file"<<std::endl;
+		std::getline(std::cin, x);
+		std::cout << "Enter text of file" << std::endl;
+		std::getline(std::cin, y);
+		std::ofstream file(x);
+		file << y;
+		file.close();
+		arr[i] = x;
+
+}
+	my::file0(arr);
+	return 0;
+}
+std::string my::file0(std::string arr[3]) {
+	std::ifstream file(arr[0]);
+	std::ifstream file1(arr[1]);
+	std::ifstream file2(arr[2]);
+	std::string line0;
+	std::string line1;
+	std::string line2;
+	std::getline(file, line0);
+	std::getline(file1, line1);
+	std::getline(file2, line2);
+	std::cout << "text of file 1: \n" << line0;
+	std::cout << "\ntext of file 2: \n" << line1;
+	std::cout << "\ntext of file 3: \n" << line2;
+	file.close();
+	file1.close();
+	file2.close();
+	return line0;
+	return line1;
+	return line2;
+}
